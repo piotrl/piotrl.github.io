@@ -52,8 +52,14 @@ var portfolio = {
                 });
 
                 that.classList.add("active");
+                if(history.pushState) {
+                    history.pushState(null, null, that.hash);
+                } else { /* fallback */
+                    location.hash = that.hash;
+                }
 
-                portfolio.events.scrollTo(direction, 1000);
+                portfolio.events.scrollTo(direction, 500);
+
                 event.stopPropagation();
                 event.preventDefault();     // preventing flickering after click
             });
