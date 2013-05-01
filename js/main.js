@@ -12,9 +12,7 @@ var portfolio = {
             return -c/2 * (t*(t-2) - 1) + b;
         };
 
-        var forEach = Array.prototype.forEach; // forEach for NodeLists
-
-        portfolio.bindUIActions(forEach);
+        portfolio.bindUIActions();
     },
     events: {
         scrollTo: function(to, duration) {
@@ -25,7 +23,7 @@ var portfolio = {
             var start = element.scrollTop,
                 difference = to - start,
                 currentRotation = 0,
-                increment = 20;
+                increment = 10;
 
             var animateScroll = function() {
                 currentRotation += increment;
@@ -43,16 +41,20 @@ var portfolio = {
         },
     },
     bindUIActions: function(forEach) {
-        forEach.call(portfolio.elements.nav, function(that) { // that: Node Element of actual iteration
-            var direction = document.querySelector(that.hash).offsetTop; // find element and check his offset
-            console.log(that + ": " + direction);
+        [].forEach.call(portfolio.elements.nav, function(that) { // that: Node Element of actual iteration
+            var direction = document.querySelector(that.hash);   // find element with specyfic #hash
+                direction = direction.offsetTop;                 // and check his offset
 
             that.addEventListener('click', function(event) {
+                [].forEach.call(portfolio.elements.nav, function(that) {
+                    that.classList.remove("active");        // Remove '.active' from every nav position
+                });
+
                 that.classList.add("active");
 
                 portfolio.events.scrollTo(direction, 1000);
                 event.stopPropagation();
-                event.preventDefault();     // preventing flicker after click
+                event.preventDefault();     // preventing flickering after click
             });
         });
     }
