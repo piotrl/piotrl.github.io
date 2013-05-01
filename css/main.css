@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Base styles: opinionated defaults
+   Base styles
    ========================================================================== */
 
 html,
@@ -9,11 +9,9 @@ select,
 textarea {
     color: #DDD;
 }
-html {
-    background: #444 url("../img/bg_body.png"); /* Fallback */
-    background: /*-moz-linear-gradient(top, rgba(0,0,0,.6), rgba(0,0,0,.6)),*/
-                #444 url("../img/bg_body.png");
 
+html {
+    background: #444 url("../img/bg_body.png");
 }
 
 body {
@@ -28,10 +26,9 @@ a {
     text-shadow: 1px 1px 2px #000;
 }
 
-/*
+/**
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection declarations have to be separate.
- * Customize the background color to match your design.
  */
 
 ::-moz-selection {
@@ -44,7 +41,7 @@ a {
     text-shadow: none;
 }
 
-/*
+/**
  * A better looking default horizontal rule
  */
 
@@ -57,7 +54,7 @@ hr {
     padding: 0;
 }
 
-/*
+/**
  * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
  */
 
@@ -65,7 +62,7 @@ img {
     vertical-align: middle;
 }
 
-/*
+/**
  * Remove default fieldset styles.
  */
 
@@ -75,7 +72,7 @@ fieldset {
     padding: 0;
 }
 
-/*
+/**
  * Allow only vertical resizing of textareas.
  */
 
@@ -211,7 +208,7 @@ article, aside {
     overflow: hidden;
 }
 
-/*
+/**
  * Social media icons
  */
 
@@ -254,7 +251,7 @@ article, aside {
     clear: both;
 }
 
-/*
+/**
  * About
  */
 
@@ -275,7 +272,7 @@ aside h3::after {
     font-weight: norm
 }
 
-/*
+/**
  * Works / Portfolio
  */
 
@@ -320,25 +317,6 @@ aside h3::after {
 /* ==========================================================================
    Helper classes
    ========================================================================== */
-
-/*
- * Image replacement
- */
-
-.ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    /* IE 6/7 fallback */
-    *text-indent: -9999px;
-}
-
-.ir:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 100%;
-}
 
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
@@ -526,11 +504,6 @@ aside h3::after {
         right: 0;
         bottom: 0;
     }
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (min-resolution: 144dpi) {
-    /* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
