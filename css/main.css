@@ -26,6 +26,12 @@ a {
     text-shadow: 1px 1px 2px #000;
 }
 
+/* Remove outline on links in firefox */
+
+a:focus {
+    outline: none;
+}
+
 /**
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection declarations have to be separate.
@@ -256,7 +262,8 @@ article, aside {
  */
 
 .about article h1,
-aside h3 {
+aside h3,
+h1.headline {
     font-weight: normal;
     text-align: center;
     font-family: Georgia;
@@ -264,8 +271,10 @@ aside h3 {
 
 .about article h1::before,
 aside h3::before,
+h1.headline::before,
 .about article h1::after,
-aside h3::after {
+aside h3::after,
+h1.headline::after {
     content: ' — ';
     color: #AAA;
     text-shadow: 0 1px 1px #222;
@@ -276,7 +285,7 @@ aside h3::after {
  * Works / Portfolio
  */
 
-.works h1 {
+.works article h1 {
     font-size: 0.9em;
     font-weight: normal;
     margin: 0.5em 1em;
@@ -407,6 +416,10 @@ aside h3::after {
     body > section.navigate {
         max-width: 80%;
         margin: 0 auto;
+    }
+
+    article {
+        font-size: 1.0em;
     }
 
     article, aside {
