@@ -16,8 +16,8 @@ var portfolio = {
     },
     events: {
         scrollTo: function(to, duration) {
-                // use document.body for Chrome, and document.documentElement for firefox
-                // It depends on element.scrollTop value.
+                // element = document.body for Chrome, and document.documentElement for firefox
+                // if element.scrollTop = 0, chrome will use document.documentElement anyway :/
             var element = (document.body.scrollTop) ? document.body : document.documentElement;
 
             var start = element.scrollTop,
@@ -28,10 +28,11 @@ var portfolio = {
             var animateScroll = function() {
                 currentRotation += increment;
                 var val = Math.easeInOutQuad(currentRotation, start, difference, duration);
-                element.scrollTop = val;
 
-                // console.log("if: " + currentRotation + " < " + duration);
-                console.log(element + ".scrollTop: " + val);
+                // hardfix for chrome & firefox
+                document.body.scrollTop = val;
+                document.documentElement.scrollTop = val;
+
                 if(currentRotation <= duration) {
                     setTimeout(animateScroll, increment);
                 }
