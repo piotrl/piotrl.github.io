@@ -1,0 +1,606 @@
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #DDD;
+}
+html {
+    background: #444 url("../img/bg_body.png"); /* Fallback */
+    background: /*-moz-linear-gradient(top, rgba(0,0,0,.6), rgba(0,0,0,.6)),*/
+                #444 url("../img/bg_body.png");
+
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px #111;
+}
+
+a {
+    color: #EEE;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #222;
+    text-shadow: none;
+}
+
+::selection {
+    background: #222;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Chrome Frame prompt
+   ========================================================================== */
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+body > section.navigate {
+    padding: 0.5em;
+    overflow: hidden;
+}
+
+.introdution {
+    overflow: hidden;
+    padding: 5px 0;
+}
+
+.author {
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0 .5em;
+}
+
+.author img {
+    max-height: 4em;
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.author::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.6);
+}
+
+h1.name {
+    padding: 0;
+    margin: 0;
+    margin-top: .5em;
+    font-size: 1em;
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+h1.name span {
+    font-weight: bold;
+}
+
+h1.name + h2 {
+    font-size: 1em;
+    color: #AAA;
+    margin: 0;
+    font-weight: normal;
+    text-transform: lowercase;
+    line-height: 1em;
+}
+header > nav {
+    margin: 1em auto;
+    padding-bottom: 3em;
+    overflow: hidden;
+    position: relative;
+}
+
+header > nav::before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    content: "";
+    box-shadow: 0 0 .5em .3em #111;
+    border-radius: 50%;
+}
+
+header > nav ul {
+    width: 16em;
+    margin: 0 auto;
+}
+
+header > nav li {
+    float: left;
+    width: 6em;
+    margin: 0 1em;
+    text-align: center;
+}
+
+header > nav li a {
+    position: relative;
+    display: block;
+    padding: 1em 0;
+    background: rgba(0,0,0,0.2);
+
+}
+
+header > nav li a::before {
+    content: '';
+    position: absolute;
+    bottom: -2em;
+    left: 0;
+    border-top: 2em solid rgba(0,0,0,0.2);
+    border-right: 3em solid transparent;
+}
+
+header > nav li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2em;
+    right: 0;
+    border-top: 2em solid rgba(0,0,0,0.2);
+    border-left: 3em solid transparent;
+}
+article, aside {
+    padding: .5em 1em;
+    overflow: hidden;
+}
+
+/*
+ * Social media icons
+ */
+
+.social li {
+    list-style: none;
+
+    padding: .5em 0;
+}
+
+.social a {
+    display: block;
+    padding-left: 42px;
+    font-weight: bold;
+    white-space:pre;
+    color: #CCC;
+    line-height: 1em;
+    background-repeat: no-repeat;
+    background-size: 32px;
+}
+
+.social a::after {
+    content: " \A" attr(href);
+    font-weight: normal;
+    color: #999;
+    font-size: 0.8em;
+}
+
+.social .google a { background-image: url("../img/icons/googleplus-32.png"); }
+.social .twitter a { background-image: url("../img/icons/twitter-32.png"); }
+.social .github a { background-image: url("../img/icons/github-32.png"); }
+.social .mail a { background-image: url("../img/icons/mail-32.png"); }
+
+.footer {
+    padding: 0.5em;
+    text-align: center;
+    text-transform: lowercase;
+    font-family: Verdana;
+    background: -webkit-linear-gradient(top, transparent, #111),
+                url("../img/bg_footer.png");
+    clear: both;
+}
+
+/*
+ * About
+ */
+
+.about article h1,
+aside h3 {
+    font-weight: normal;
+    text-align: center;
+    font-family: Georgia;
+}
+
+.about article h1::before,
+aside h3::before,
+.about article h1::after,
+aside h3::after {
+    content: ' — ';
+    color: #AAA;
+    text-shadow: 0 1px 1px #222;
+    font-weight: norm
+}
+
+/*
+ * Works / Portfolio
+ */
+
+.works h1 {
+    font-size: 0.9em;
+    font-weight: normal;
+    margin: 0.5em 1em;
+}
+
+.works article a.thumb {
+    display: block;
+    position: relative;
+    float: left;
+    padding-top: 10px;
+    background: #59020b;
+    border: 1px solid #666;
+    box-shadow: 0 0 5px 0 #222;
+}
+
+.works article a.thumb::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 2em;
+    top: -7px;
+    width: 10px;
+    height: 10px;
+    background: #59020b;
+    border-left: 1px solid #666;
+    border-top: 1px solid #666;
+
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.works article img {
+    max-width: 100%%;
+}
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Media Queries for Responsive Design.
+   'Mobile first' styles.
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+    /* Style adjustments for viewports that meet the condition */
+
+    body > section.navigate {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    article, aside {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .social li {
+        width: 12em;
+        float: left;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    body > section.navigate {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        float: left;
+        background: rgba(0,0,0,.3);
+        width: 19em;
+        height: 100%;
+        border-right: 1px solid #555;
+        box-shadow: 0 0 10px #333;
+        padding: 1em 0;
+    }
+
+    header > nav {
+        box-shadow: 0 0 10px 0 #000;
+        padding-bottom: 0;
+    }
+
+    header > nav::before {
+        display: none;
+    }
+
+    header > nav ul {
+        padding: 0;
+        margin: 0;
+        width: auto;
+        text-transform: uppercase;
+    }
+
+    header > nav li {
+        width: 100%;
+        float: none;
+        margin: 0;
+        border-top: 1px solid #444;
+    }
+
+    header > nav li:last-child {
+        border-bottom: 1px solid #444;
+    }
+
+    header > nav li a.active {
+        background-color: rgba(0, 0, 0, .5);
+    }
+
+    header > nav li a::before,
+    header > nav li a::after {
+        display: none;
+    }
+
+    article, aside {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .content {
+        margin-left: 20em;
+    }
+
+    .footer {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    body {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+
+    body > section.navigate {
+        border-left: 1px solid #555;
+        margin-left: 1em;
+        padding-top: 45px;
+    }
+
+    .footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 144dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow:none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

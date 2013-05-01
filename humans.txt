@@ -1,0 +1,11 @@
+# AUTHOR
+
+    Piotr Lewandowski
+      twitter: http://twitter.com/piotlr
+      Google+: http://gplus.to/grovman
+      Website: http://piotrl.net
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, JavaScript
+    Linux Ubuntu, Cinnamon, Sublime Text 2
