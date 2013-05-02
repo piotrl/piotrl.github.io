@@ -102,7 +102,7 @@ textarea {
    ========================================================================== */
 
 
-body > section.navigate {
+.container > section.navigate {
     padding: 0.5em;
     overflow: hidden;
 }
@@ -413,7 +413,7 @@ h1.headline::after {
 @media only screen and (min-width: 480px) {
     /* Style adjustments for viewports that meet the condition */
 
-    body > section.navigate {
+    .container > section.navigate {
         max-width: 80%;
         margin: 0 auto;
     }
@@ -435,7 +435,7 @@ h1.headline::after {
 
 @media only screen and (min-width: 768px) {
 
-    body > section.navigate {
+    .container > section.navigate {
         position: fixed;
         top: 0;
         bottom: 0;
@@ -446,6 +446,31 @@ h1.headline::after {
         border-right: 1px solid #555;
         box-shadow: 0 0 10px #333;
         padding: 1em 0;
+    }
+
+    html.presentation body {
+        background: rgba(0, 0, 0, .5);
+        -webkit-transition: .5s;
+    }
+
+    section.slides {
+        display: none;
+        visibility: hidden;
+    }
+
+    section.slides img {
+        max-width: 100%;
+        margin: 0 3em;
+    }
+
+
+    html.presentation section.content {
+        display: none !important;
+    }
+
+    html.presentation section.slides {
+        display: block;
+        visibility: visible;
     }
 
     header > nav {
@@ -477,6 +502,7 @@ h1.headline::after {
 
     header > nav li a.active {
         background-color: rgba(0, 0, 0, .5);
+        -webkit-transition: .3s;
     }
 
     header > nav li a::before,
@@ -489,7 +515,7 @@ h1.headline::after {
         margin: 0;
     }
 
-    .content {
+    .content, .slides {
         margin-left: 20em;
     }
 
@@ -500,12 +526,12 @@ h1.headline::after {
 }
 
 @media only screen and (min-width: 1024px) {
-    body {
+    .container {
         max-width: 1024px;
         margin: 0 auto;
     }
 
-    body > section.navigate {
+    .container > section.navigate {
         border-left: 1px solid #555;
         margin-left: 1em;
         padding-top: 45px;

@@ -3,6 +3,7 @@ var s,
 portfolio = {
     settings: {
         navList: document.querySelectorAll('.navigate nav a'),
+        projectList: document.querySelectorAll('section.works a.thumb'),
         scrollTime: 500
     },
     init: function() {
@@ -26,23 +27,36 @@ portfolio = {
                 direction = direction.offsetTop;                 // and check his offset
 
             that.addEventListener('click', function(event) {
-                [].forEach.call(s.navList, function(that) {
-                    that.classList.remove("active");        // Remove '.active' from every nav position
-                });
-
-                that.classList.add("active");
-                if(history.pushState) {
-                    history.pushState(null, null, that.hash);
-                } else { /* fallback */
-                    location.hash = that.hash;
-                }
-
+                portfolio.setHash(that);
                 portfolio.scrollTo(direction, s.scrollTime);
 
                 event.stopPropagation();
                 event.preventDefault();     // preventing flickering after click
             });
         });
+
+        [].forEach.call(s.projectList, function(that) {
+            that.addEventListener('click', function(){
+                document.documentElement.classList.add("presentation");
+            }, false);
+        });
+    },
+    // setters
+    setHash: function(that) {
+        if( document.documentElement.classList.contains('presentation') ) {
+            document.documentElement.classList.remove("presentation");
+        }
+
+        [].forEach.call(s.navList, function(that) {
+            that.classList.remove("active");        // Remove '.active' from every nav position
+        });
+
+        that.classList.add("active");
+        if(history.pushState) {
+            history.pushState(null, null, that.hash);
+        } else { /* fallback */
+            location.hash = that.hash;
+        }
     },
     scrollTo: function(to, duration) {
             // element = document.body for Chrome, and document.documentElement for firefox

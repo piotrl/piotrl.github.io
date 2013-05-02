@@ -14,6 +14,7 @@
         <!--[if lte IE 7]>
             <p class="chromeframe">Używasz bardzo starej przeglądarki. <a href="http://browsehappy.com/">Zaktualizuj ją!</a> lun <a href="http://www.google.com/chromeframe/?redirect=true">zainstaluj Google Chrome Frame</a>, zapewniającej lepsze doświadczenia w czasie korzystania z internetu.</p>
         <![endif]-->
+        <div class="container">
         <section class="navigate">
             <header>
                 <div class="introdution">
@@ -42,7 +43,6 @@
                 linx
             </footer> -->
         </section>
-
         <section id="about" class="content about">
             <article>
                 <header><h1>O mnie</h1></header>
@@ -55,8 +55,14 @@
         <section id="works" class="content works">
             <h1 class="headline">Prace</h1>
             <article>
+                <header><h1><a href="#presentation">Portal OZE</a></h1></header>
+                <a href="#presentation" class="thumb">
+                    <img src="./img/portfolio/portaloze/thumb.png" alt="" />
+                </a>
+            </article>
+            <article>
                 <header><h1><a href="#">Militaria</a></h1></header>
-                <a href="#" class="thumb">
+                <a href="#presentation" class="thumb">
                     <img src="./img/portfolio/militaria/thumb.png" alt="" />
                 </a>
             </article>
@@ -73,6 +79,11 @@
                 </a>
             </article>
         </section>
+        <section id="presentation" class="slides">
+            <div class="caption">
+                <img src="./img/portfolio/portaloze/front.png" />
+            </div>
+        </section>
 
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
@@ -84,5 +95,7 @@
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
+    </div>
+
     </body>
 </html>
