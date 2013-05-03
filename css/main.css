@@ -20,6 +20,10 @@ body {
     text-shadow: 1px 1px 2px #111;
 }
 
+html, body {
+    height: 100%;
+}
+
 a {
     color: #EEE;
     text-decoration: none;
@@ -459,7 +463,7 @@ h1.headline::after {
     }
 
     section.slides img {
-        max-width: 100%;
+        max-width: 90%;
         margin: 0 3em;
     }
 
