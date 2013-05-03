@@ -475,27 +475,32 @@ h1.headline::after {
     section.slides a.next-button,
     section.slides a.prev-button {
         top: 20em;
-        right: 0;
-        width: 1em;
-        height: 3em;
-        background: #FFF;
+        right: -1em;
+        width: 16px;
+        height: 16px;
+        background: url('../img/icons/gallery-next.png');
     }
 
 
     section.slides a.prev-button {
         left: 1em;
+        background: url('../img/icons/gallery-prev.png');
     }
 
     section.slides a.close-button {
         width: 16px;
         height: 16px;
-        background: #FFF;
+        background: url('../img/icons/gallery-close.png');
         right: 0;
         top: 1em;
     }
 
     section.slides a.close-button:hover {
-        background: #000;
+        background: url('../img/icons/gallery-close-hover.png');
+    }
+
+    section.slides a.next-button:hover {
+        background: url('../img/icons/gallery-next-hover.png');
     }
 
     section.slides img {
@@ -503,6 +508,7 @@ h1.headline::after {
         display: block;
         max-width: 90%;
         margin: 3em;
+        box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
         transition: .5s;
     }
 
