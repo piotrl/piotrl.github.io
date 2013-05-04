@@ -38,10 +38,6 @@ portfolio = {
                 portfolio.setHash(that.hash);
                 portfolio.scrollTo(direction, s.scrollTime);
 
-                setTimeout(function() { // when portfolio will end
-                    s.ignoreHashChange = false;
-                }, s.scrollTime);
-
                 event.stopPropagation();
                 event.preventDefault();     // preventing flickering after click
             });
@@ -65,22 +61,18 @@ portfolio = {
         var navEl = document.querySelector("nav a[href*='#"+hash+"']");
 
         navEl.classList.add("active");
-        if(history.pushState && location.hash != ('#'+hash) ) {
+        if(history.pushState && location.hash !== '#'+hash ) {
             history.pushState(null, null, '#'+hash);
-        } else { /* fallback */
-            location.hash = '#'+hash;
         }
     },
     changeSection: function() {
         // check offsets of all sections
-        // var sections = s.sectionList;
 
         for(var i = 0; i < s.sectionList.length; i++) {
             var elOffsetTop = s.sectionList[i].offsetTop,
                 elOffsetBottom = parseInt(elOffsetTop + s.sectionList[i].offsetHeight, 10);
                 // console.info(window.scrollY + " ↓ " + elOffsetTop + " ↓↓ " + elOffsetBottom);
             if(window.scrollY >= elOffsetTop && window.scrollY <= elOffsetBottom) {
-
                 if(s.ignoreHashChange === false) {
                     portfolio.setHash(s.sectionList[i].id);
                 }
@@ -157,6 +149,8 @@ portfolio = {
 
             if(currentRotation <= duration) {
                 setTimeout(animateScroll, increment);
+            } else {
+                    s.ignoreHashChange = false; // last scroll, you can change hash now!
             }
         };
 
