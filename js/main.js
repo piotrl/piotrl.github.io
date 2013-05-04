@@ -3,9 +3,11 @@ var s,
 portfolio = {
     settings: {
         navList: document.querySelectorAll('.navigate nav a'),
+        sectionList: document.querySelectorAll('section.content'),
         projectList: document.querySelectorAll('section.works a.thumb'),
         galleryEl: document.getElementById('presentation'),
-        scrollTime: 500
+        scrollTime: 500,
+        ignoreHashChange: false
     },
     init: function() {
         s = portfolio.settings;
@@ -24,14 +26,21 @@ portfolio = {
         portfolio.createGalleryNav();
     },
     bindUIActions: function() {
+        document.addEventListener('scroll', portfolio.changeSection, false);
+
         [].forEach.call(s.navList, function(that) {   // that: Node Element of actual iteration
             var direction = document.querySelector(that.hash);   // find element with specyfic #hash
                 direction = direction.offsetTop;                 // and check his offset
 
             that.addEventListener('click', function(event) {
+                s.ignoreHashChange = true;
                 portfolio.removeGalleryLayer();
-                portfolio.setHash(that);
+                portfolio.setHash(that.hash);
                 portfolio.scrollTo(direction, s.scrollTime);
+
+                setTimeout(function() { // when portfolio will end
+                    s.ignoreHashChange = false;
+                }, s.scrollTime);
 
                 event.stopPropagation();
                 event.preventDefault();     // preventing flickering after click
@@ -47,16 +56,35 @@ portfolio = {
         });
     },
     // setters
-    setHash: function(that) {
+    setHash: function(hash) {
         [].forEach.call(s.navList, function(that) {
             that.classList.remove("active");        // Remove '.active' from every nav position
         });
 
-        that.classList.add("active");
-        if(history.pushState) {
-            history.pushState(null, null, that.hash);
+        hash = hash.replace('#', '');
+        var navEl = document.querySelector("nav a[href*='#"+hash+"']");
+
+        navEl.classList.add("active");
+        if(history.pushState && location.hash != ('#'+hash) ) {
+            history.pushState(null, null, '#'+hash);
         } else { /* fallback */
-            location.hash = that.hash;
+            location.hash = '#'+hash;
+        }
+    },
+    changeSection: function() {
+        // check offsets of all sections
+        // var sections = s.sectionList;
+
+        for(var i = 0; i < s.sectionList.length; i++) {
+            var elOffsetTop = s.sectionList[i].offsetTop,
+                elOffsetBottom = parseInt(elOffsetTop + s.sectionList[i].offsetHeight, 10);
+                // console.info(window.scrollY + " ↓ " + elOffsetTop + " ↓↓ " + elOffsetBottom);
+            if(window.scrollY >= elOffsetTop && window.scrollY <= elOffsetBottom) {
+
+                if(s.ignoreHashChange === false) {
+                    portfolio.setHash(s.sectionList[i].id);
+                }
+            }
         }
     },
     createGalleryNav: function() {
