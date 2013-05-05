@@ -104,30 +104,46 @@ portfolio = {
         if( document.documentElement.classList.contains('presentation') ) {
             document.documentElement.classList.remove("presentation");
         }
-        console.log('gallery layer');
-    },
-    slideNext: function() {
-        var current = document.querySelector('img.current'),
-            next = document.querySelector('img.next');
 
-            if(next) {
+        portfolio.setSection();
+    },
+    slideNext: function(button) {
+        var current = document.querySelector('img.current'),
+            next = document.querySelectorAll('img.next');
+
+            if(next.length > 0) {
                 current.classList.remove('current');
                 current.classList.add('prev');
 
-                next.classList.remove('next');
-                next.classList.add('current');
+                next[0].classList.remove('next');
+                next[0].classList.add('current');
+                console.log(next.length);
+            }
+
+            if(next.length <= 1) {
+                button.target.style.display = 'none';
+                console.log(button.target);
+            } else {
+                document.querySelector('a.prev-button').style.display = 'block';
             }
     },
-    slidePrev: function() {
+    slidePrev: function(button) {
         var current = document.querySelector('img.current'),
-            prev = document.querySelector('img.prev');
+            prev = document.querySelectorAll('img.prev');
 
             if(prev) {
                 current.classList.remove('current');
                 current.classList.add('next');
 
-                prev.classList.remove('prev');
-                prev.classList.add('current');
+                prev[0].classList.remove('prev');
+                prev[0].classList.add('current');
+            }
+            if(prev.length <= 1) {
+                button.target.style.display = 'none';
+                console.log(button.target);
+            } else {
+                document.querySelector('a.next-button').style.display = 'block';
+
             }
     },
     scrollTo: function(to, duration) {
