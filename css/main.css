@@ -18,6 +18,7 @@ body {
     font-size: 1em;
     line-height: 1.5;
     text-shadow: 1px 1px 2px #111;
+    transition: .5s;
 }
 
 html, body {
@@ -106,7 +107,7 @@ textarea {
    ========================================================================== */
 
 
-.container > section.navigate {
+section.navigate {
     padding: 0.5em;
     overflow: hidden;
     z-index: 1;
@@ -184,6 +185,7 @@ header > nav ul {
 
 header > nav li {
     float: left;
+    list-style: none;
     width: 6em;
     margin: 0 1em;
     text-align: center;
@@ -225,7 +227,6 @@ article, aside {
 
 .social li {
     list-style: none;
-
     padding: .5em 0;
 }
 
@@ -411,6 +412,30 @@ h1.headline::after {
 }
 
 /* ==========================================================================
+   Animations keyframes
+   ========================================================================== */
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        display: block;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        display: block;
+    }
+}
+
+/* ==========================================================================
    Media Queries for Responsive Design.
    'Mobile first' styles.
    ========================================================================== */
@@ -418,7 +443,7 @@ h1.headline::after {
 @media only screen and (min-width: 480px) {
     /* Style adjustments for viewports that meet the condition */
 
-    .container > section.navigate {
+    section.navigate {
         max-width: 80%;
         margin: 0 auto;
     }
@@ -440,7 +465,7 @@ h1.headline::after {
 
 @media only screen and (min-width: 768px) {
 
-    .container > section.navigate {
+    section.navigate {
         position: fixed;
         top: 0;
         bottom: 0;
@@ -448,15 +473,20 @@ h1.headline::after {
         background: rgba(0,0,0,.3);
         width: 19em;
         height: 100%;
-        border-right: 1px solid #555;
-        box-shadow: 0 0 10px #333;
+        border: 0 solid #555;
+        border-right-width: 1px;
+        box-shadow: 0 0 10px #222;
         padding: 1em 0;
     }
 
     html.presentation body {
         background: rgba(0, 0, 0, .5);
         overflow: hidden;
-        transition: .5s;
+    }
+
+    html.presentation section.navigate {
+        border-color: #222;
+        box-shadow: 0 0 10px #000;
     }
 
     section.slides {
@@ -470,38 +500,41 @@ h1.headline::after {
         position: absolute;
         display: block;
         cursor: pointer;
+        background-image: url('../img/icons/gallery-nav.png');
+        width: 20px;
+        height: 20px;
     }
 
-    section.slides a.next-button,
-    section.slides a.prev-button {
+    section.slides a.next-button {
         top: 20em;
         right: -1em;
-        width: 16px;
-        height: 16px;
-        background: url('../img/icons/gallery-next.png');
-    }
-
-
-    section.slides a.prev-button {
-        left: 1em;
-        background: url('../img/icons/gallery-prev.png');
-    }
-
-    section.slides a.close-button {
-        width: 16px;
-        height: 16px;
-        background: url('../img/icons/gallery-close.png');
-        right: 0;
-        top: 1em;
-    }
-
-    section.slides a.close-button:hover {
-        background: url('../img/icons/gallery-close-hover.png');
+        background-position: 0 0;
     }
 
     section.slides a.next-button:hover {
-        background: url('../img/icons/gallery-next-hover.png');
+        background-position: 0 20px;
     }
+
+    section.slides a.prev-button {
+        top: 20em;
+        left: 1em;
+        background-position: 20px 0;
+    }
+
+    section.slides a.prev-button:hover {
+        background-position: 20px 20px;
+    }
+
+    section.slides a.close-button {
+        right: 0;
+        top: 1em;
+        background-position: 40px 0;
+    }
+
+    section.slides a.close-button:hover {
+        background-position: 40px 20px;
+    }
+
 
     section.slides img {
         position: absolute;
@@ -514,6 +547,8 @@ h1.headline::after {
 
     section.slides img.current {
         opacity: 1;
+        left: 0;
+        right: 0; /* firefox doesn't wanna animate without 0 on first state */
     }
 
     section.slides img.next {
@@ -533,6 +568,8 @@ h1.headline::after {
     html.presentation section.slides {
         display: block;
         visibility: visible;
+        animation: .5s fadeIn ease-out;
+        -webkit-animation: .5s fadeIn ease-out;
     }
 
     header > nav {
@@ -593,8 +630,8 @@ h1.headline::after {
         margin: 0 auto;
     }
 
-    .container > section.navigate {
-        border-left: 1px solid #555;
+    section.navigate {
+        border-left-width: 1px;
         margin-left: 1em;
         padding-top: 45px;
     }
