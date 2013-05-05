@@ -22,11 +22,12 @@ portfolio = {
             return -c/2 * (t*(t-2) - 1) + b;
         };
 
+        portfolio.onLoad();
         portfolio.bindUIActions();
         portfolio.createGalleryNav();
     },
     bindUIActions: function() {
-        document.addEventListener('scroll', portfolio.changeSection, false);
+        document.addEventListener('scroll', portfolio.setSection, false);
 
         [].forEach.call(s.navList, function(that) {   // that: Node Element of actual iteration
             var direction = document.querySelector(that.hash);   // find element with specyfic #hash
@@ -65,7 +66,7 @@ portfolio = {
             history.pushState(null, null, '#'+hash);
         }
     },
-    changeSection: function() {
+    setSection: function() {
         // check offsets of all sections
 
         for(var i = 0; i < s.sectionList.length; i++) {
@@ -153,8 +154,21 @@ portfolio = {
                     s.ignoreHashChange = false; // last scroll, you can change hash now!
             }
         };
-
         animateScroll();
+    },
+    onLoad: function() {
+        // recognize hash
+        if(location.hash.indexOf('#!/') !== -1) {
+            // interprets hash - which gallery will be displayed
+            var hashAttrs = location.hash.replace('#!/', '').split('/');
+
+            if(hashAttrs >= 2) {
+                document.documentElement.classList.add('presentation');
+            }
+
+        } else {
+            portfolio.setSection();
+        }
     }
 };
 
