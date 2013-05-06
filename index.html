@@ -56,13 +56,13 @@
             <h1 class="headline">Prace</h1>
             <article>
                 <header><h1><a href="#presentation">Portal OZE</a></h1></header>
-                <a href="#presentation" class="thumb">
+                <a href="#portaloze" class="thumb">
                     <img src="./img/portfolio/portaloze/thumb.png" alt="" />
                 </a>
             </article>
             <article>
                 <header><h1><a href="#">Militaria</a></h1></header>
-                <a href="#presentation" class="thumb">
+                <a href="#portaloze" class="thumb">
                     <img src="./img/portfolio/militaria/thumb.png" alt="" />
                 </a>
             </article>
@@ -74,22 +74,30 @@
             </article>
             <article>
                 <header><h1>kulinarne</h1></header>
-                <a href="#" class="thumb">
+                <a href="#kulinarne" class="thumb">
                     <img src="./img/portfolio/kulinarne/thumb.png" alt="" />
                 </a>
             </article>
         </section>
-        <section id="presentation" class="slides clearfix">
-            <div class="caption clearfix">
-                <img src="./img/portfolio/portaloze/front.png" class="current" />
-                <img src="./img/portfolio/portaloze/single.png" class="next" />
-                <img src="./img/portfolio/portaloze/thumb.png" class="prev" />
-            </div>
+        <section id="presentation" class="slides">
         </section>
 
-        <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-
+        <script type="text/javascript">
+            portfolio.settings.fileNames = {
+                "portaloze": [
+                    "front.png",
+                    "single.png"
+                ],
+                "riesenburg": [
+                    "front.png",
+                    "event.png"
+                ],
+                "kulinarne": [
+                    "front.png"
+                ]
+            }
+        </script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-9352840-2'],['_trackPageview']];

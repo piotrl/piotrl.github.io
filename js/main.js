@@ -7,10 +7,11 @@ portfolio = {
         projectList: document.querySelectorAll('section.works a.thumb'),
         galleryEl: document.getElementById('presentation'),
         scrollTime: 500,
-        ignoreHashChange: false
+        ignoreHashChange: false,
     },
     init: function() {
         s = portfolio.settings;
+
         Math.easeInOutQuad = function (t, b, c, d) {
             // https://github.com/danro/jquery-easing/blob/master/jquery.easing.js
             // t: current time, b: begInnIng value, c: change In value, d: duration
@@ -46,6 +47,9 @@ portfolio = {
 
         [].forEach.call(s.projectList, function(that) {
             that.addEventListener('click', function(event){
+                var idGallery = that.hash.replace('#', '');
+
+                portfolio.createGalleryLayer(idGallery);
                 document.documentElement.classList.add("presentation");
 
                 event.preventDefault();
@@ -99,6 +103,27 @@ portfolio = {
         closeGalleryEl.addEventListener('click', portfolio.removeGalleryLayer, false);
         nextGalleryEl.addEventListener('click', portfolio.slideNext, false);
         prevGalleryEl.addEventListener('click', portfolio.slidePrev, false);
+    },
+    createGalleryLayer: function(id) {
+        var galleryLayer = s.galleryEl;
+        console.log(galleryLayer);
+
+        var imgCaption = document.createElement('div');
+            imgCaption.classList.add('caption');
+
+        // s.fileNames imported from HTML file
+
+        for(var i = 0; i < s.fileNames[id].length; i++) {
+            var slide = document.createElement('img');
+            slide.src = "./img/portfolio/" + id + '/' + s.fileNames[id][i]; // URL PATH
+
+            if(i === 0) slide.classList.add('current');
+            else slide.classList.add('next');
+
+            imgCaption.appendChild(slide);
+        }
+
+        galleryLayer.appendChild(imgCaption);
     },
     removeGalleryLayer: function() {
         if( document.documentElement.classList.contains('presentation') ) {
