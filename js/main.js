@@ -1,4 +1,3 @@
-'use strict';
 var s,
 portfolio = {
     settings: {
@@ -8,6 +7,7 @@ portfolio = {
         galleryEl: document.getElementById('presentation'),
         scrollTime: 500,
         ignoreHashChange: false,
+        fileNames: false
     },
     init: function() {
         s = portfolio.settings;
@@ -49,7 +49,7 @@ portfolio = {
             that.addEventListener('click', function(event){
                 var idGallery = that.hash.replace('#', '');
 
-                portfolio.createGalleryLayer(idGallery);
+                portfolio.enableGalleryLayer(idGallery);
                 document.documentElement.classList.add("presentation");
 
                 event.preventDefault();
@@ -63,9 +63,14 @@ portfolio = {
         });
 
         hash = hash.replace('#', '');
-        var navEl = document.querySelector("nav a[href*='#"+hash+"']");
 
-        navEl.classList.add("active");
+        if(hash.indexOf('!/') === -1) {
+            // change navigation style
+            var navEl = document.querySelector("nav a[href*='#"+hash+"']");
+
+            navEl.classList.add("active");
+        }
+
         if(history.pushState && location.hash !== '#'+hash ) {
             history.pushState(null, null, '#'+hash);
         }
@@ -104,12 +109,28 @@ portfolio = {
         nextGalleryEl.addEventListener('click', portfolio.slideNext, false);
         prevGalleryEl.addEventListener('click', portfolio.slidePrev, false);
     },
+    enableGalleryLayer: function(id) {
+        var imageList = document.querySelector('section.slides #' + id);
+        console.log(imageList);
+        if(!imageList) {
+            console.log('testette');
+            portfolio.createGalleryLayer(id);
+        }
+
+        // check one more time
+        imageList = document.querySelector('section.slides #' + id);
+        imageList.classList.remove('invisible');
+
+        portfolio.setHash( '#!/presentation/' + id );
+        s.ignoreHashChange = true;
+    },
     createGalleryLayer: function(id) {
         var galleryLayer = s.galleryEl;
-        console.log(galleryLayer);
 
         var imgCaption = document.createElement('div');
             imgCaption.classList.add('caption');
+            imgCaption.classList.add('invisible');
+            imgCaption.id = id;
 
         // s.fileNames imported from HTML file
 
@@ -126,10 +147,16 @@ portfolio = {
         galleryLayer.appendChild(imgCaption);
     },
     removeGalleryLayer: function() {
-        if( document.documentElement.classList.contains('presentation') ) {
-            document.documentElement.classList.remove("presentation");
-        }
+        document.documentElement.classList.remove("presentation"); // remove .presentation from <html>
 
+        var imageList = document.querySelectorAll('section.slides .caption');
+        console.log(imageList);
+
+        [].forEach.call(imageList, function(that) {
+            that.classList.add('invisible');
+        });
+
+        s.ignoreHashChange = false;
         portfolio.setSection();
     },
     slideNext: function(button) {
