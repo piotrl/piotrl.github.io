@@ -7,7 +7,8 @@ portfolio = {
         galleryEl: document.getElementById('presentation'),
         scrollTime: 500,
         ignoreHashChange: false,
-        fileNames: false
+        fileNames: null,
+        currentGallery: null
     },
     init: function() {
         s = portfolio.settings;
@@ -110,10 +111,11 @@ portfolio = {
         prevGalleryEl.addEventListener('click', portfolio.slidePrev, false);
     },
     enableGalleryLayer: function(id) {
+        s.ignoreHashChange = true;
+        s.currentGallery = id;
+
         var imageList = document.querySelector('section.slides #' + id);
-        console.log(imageList);
         if(!imageList) {
-            console.log('testette');
             portfolio.createGalleryLayer(id);
         }
 
@@ -121,8 +123,9 @@ portfolio = {
         imageList = document.querySelector('section.slides #' + id);
         imageList.classList.remove('invisible');
 
+        portfolio.checkNavDisplays();
+
         portfolio.setHash( '#!/presentation/' + id );
-        s.ignoreHashChange = true;
     },
     createGalleryLayer: function(id) {
         var galleryLayer = s.galleryEl;
@@ -159,7 +162,35 @@ portfolio = {
         s.ignoreHashChange = false;
         portfolio.setSection();
     },
+    checkNavDisplays: function() {
+        // img elements
+        var imgPath = '#' + s.currentGallery + ' img',
+            current = document.querySelector(imgPath + '.current'),
+            next = document.querySelectorAll(imgPath + '.next'),
+            prev = document.querySelectorAll(imgPath + '.prev');
+            console.log(imgPath);
+        // controll buttons elements
+        var buttonNext = document.querySelector('a.next-button'),
+            buttonPrev = document.querySelector('a.prev-button');
+
+        var imgCount = 1 + next.length + prev.length; // 1 is for one current element
+
+        console.log('ilosc obrazow w galerii: ' + imgCount);
+
+        if( next.length === 0 ) {
+            buttonNext.classList.add('invisible');
+        } else {
+            buttonNext.classList.remove('invisible');
+        }
+
+        if( prev.length === 0 ) {
+            buttonPrev.classList.add('invisible');
+        } else {
+            buttonPrev.classList.remove('invisible');
+        }
+    },
     slideNext: function(button) {
+
         var current = document.querySelector('img.current'),
             next = document.querySelectorAll('img.next');
 
@@ -172,12 +203,7 @@ portfolio = {
                 console.log(next.length);
             }
 
-            if(next.length <= 1) {
-                button.target.style.display = 'none';
-                console.log(button.target);
-            } else {
-                document.querySelector('a.prev-button').style.display = 'block';
-            }
+            portfolio.checkNavDisplays();
     },
     slidePrev: function(button) {
         var current = document.querySelector('img.current'),
@@ -190,13 +216,8 @@ portfolio = {
                 prev[0].classList.remove('prev');
                 prev[0].classList.add('current');
             }
-            if(prev.length <= 1) {
-                button.target.style.display = 'none';
-                console.log(button.target);
-            } else {
-                document.querySelector('a.next-button').style.display = 'block';
 
-            }
+            portfolio.checkNavDisplays();
     },
     scrollTo: function(to, duration) {
             // element = document.body for Chrome, and document.documentElement for firefox
