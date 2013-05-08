@@ -36,10 +36,11 @@ portfolio = {
                 direction = direction.offsetTop;                 // and check his offset
 
             that.addEventListener('click', function(event) {
-                s.ignoreHashChange = true;
                 portfolio.removeGalleryLayer();
-                portfolio.setHash(that.hash);
                 portfolio.scrollTo(direction, s.scrollTime);
+
+                s.ignoreHashChange = true;
+                portfolio.setHash(that.hash);
 
                 event.stopPropagation();
                 event.preventDefault();     // preventing flickering after click
@@ -60,20 +61,21 @@ portfolio = {
     // setters
     setHash: function(hash) {
         [].forEach.call(s.navList, function(that) {
-            that.classList.remove("active");        // Remove '.active' from every nav position
+            // Reset style of every nav element
+            that.classList.remove("active");
         });
 
         hash = hash.replace('#', '');
 
-        if(hash.indexOf('!/') === -1) {
-            // change navigation style
-            var navEl = document.querySelector("nav a[href*='#"+hash+"']");
-
+        // change nav element styles
+        var navEl = document.querySelector("nav a[href*='#"+hash+"']");
+        if(navEl) {
             navEl.classList.add("active");
         }
 
-        if(history.pushState && location.hash !== '#'+hash ) {
-            history.pushState(null, null, '#'+hash);
+        // set hash in adress
+        if(history.pushState && location.hash !== '#!/' + hash ) {
+            history.pushState(null, null, '#!/' + hash);
         }
     },
     setSection: function() {
@@ -125,7 +127,7 @@ portfolio = {
 
         portfolio.checkNavDisplays();
 
-        portfolio.setHash( '#!/presentation/' + id );
+        portfolio.setHash( 'presentation/' + id );
     },
     createGalleryLayer: function(id) {
         var galleryLayer = s.galleryEl;
