@@ -7,7 +7,7 @@ portfolio = {
         galleryEl: document.getElementById('presentation'),
         scrollTime: 500,
         ignoreHashChange: false,
-        fileNames: null,
+        fileNames: null,    // imported from index.html
         currentGallery: null
     },
     init: function() {
@@ -24,9 +24,9 @@ portfolio = {
             return -c/2 * (t*(t-2) - 1) + b;
         };
 
-        portfolio.onLoad();
         portfolio.bindUIActions();
         portfolio.createGalleryNav();
+        portfolio.onLoad();
     },
     bindUIActions: function() {
         document.addEventListener('scroll', portfolio.setSection, false);
@@ -253,14 +253,19 @@ portfolio = {
             // interprets hash - which gallery will be displayed
             var hashAttrs = location.hash.replace('#!/', '').split('/');
 
-            if(hashAttrs >= 2) {
+            if(hashAttrs.length >= 2) {
                 document.documentElement.classList.add('presentation');
+                portfolio.enableGalleryLayer(hashAttrs[1]);
+            } else {
+                var direction = document.querySelector( '#' + hashAttrs[0] ).offsetTop;
+                portfolio.scrollTo( direction, s.scrollTime );
+
+                portfolio.setHash(hashAttrs[0]);
             }
 
-        } else {
-            portfolio.setSection();
         }
     }
 };
 
+// EVERYTHING BEGIN HERE
 document.addEventListener('DOMContentLoaded', portfolio.init, false);
