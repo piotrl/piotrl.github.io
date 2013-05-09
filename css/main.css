@@ -284,44 +284,46 @@ h1.headline::after {
     content: ' — ';
     color: #AAA;
     text-shadow: 0 1px 1px #222;
-    font-weight: norm
 }
 
 /**
  * Works / Portfolio
  */
 
-.works article h1 {
-    font-size: 0.9em;
+.works article {
+    padding: 1em;
+    border-top: 1px dashed #555;
+}
+
+.works aside {
+    float: left;
+    font-family: 'PT Sans', serif;
     font-weight: normal;
-    margin: 0.5em 1em;
+    max-width: 35%;
+}
+
+.works aside dl {
+    font-size: 0.9em;
+}
+
+.works aside dl dt {
+    float: left;
+    padding-right: 5px;
+}
+
+.works article h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
 }
 
 .works article a.thumb {
     display: block;
     position: relative;
-    float: left;
-    padding-top: 10px;
-    background: #59020b;
+    float: right;
     border: 1px solid #666;
     box-shadow: 0 0 5px 0 #222;
-}
-
-.works article a.thumb::before {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 2em;
-    top: -7px;
-    width: 10px;
-    height: 10px;
-    background: #59020b;
-    border-left: 1px solid #666;
-    border-top: 1px solid #666;
-
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
 }
 
 .works article img {
@@ -503,6 +505,7 @@ h1.headline::after {
         background-image: url('../img/icons/gallery-nav.png');
         width: 20px;
         height: 20px;
+        z-index: 1;
     }
 
     section.slides a.next-button {
@@ -542,6 +545,7 @@ h1.headline::after {
         max-width: 90%;
         margin: 3em;
         box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+        border: 1px solid #444;
         transition: .5s;
     }
 
@@ -597,6 +601,10 @@ h1.headline::after {
 
     header > nav li:last-child {
         border-bottom: 1px solid #444;
+    }
+
+    html.presentation header > nav li {
+        border-color: #222;
     }
 
     header > nav li a.active {
