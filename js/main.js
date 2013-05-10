@@ -31,9 +31,9 @@ portfolio = {
     bindUIActions: function() {
         document.addEventListener('scroll', portfolio.setSection, false);
 
-        [].forEach.call(s.navList, function(that) {   // that: Node Element of actual iteration
-            var direction = document.querySelector(that.hash);   // find element with specyfic #hash
-                direction = direction.offsetTop;                 // and check his offset
+        [].forEach.call(s.navList, function(that) {             // that: Node Element of actual iteration
+            var direction = document.querySelector(that.hash);  // find element with specific #hash
+                direction = direction.offsetTop;                // and check his offset
 
             that.addEventListener('click', function(event) {
                 portfolio.removeGalleryLayer();
@@ -109,8 +109,8 @@ portfolio = {
 
          // add new events
         closeGalleryEl.addEventListener('click', portfolio.removeGalleryLayer, false);
-        nextGalleryEl.addEventListener('click', portfolio.slideNext, false);
-        prevGalleryEl.addEventListener('click', portfolio.slidePrev, false);
+        nextGalleryEl.addEventListener('click', portfolio.slideTo, false);
+        prevGalleryEl.addEventListener('click', portfolio.slideTo, false);
     },
     enableGalleryLayer: function(id) {
         s.ignoreHashChange = true;
@@ -165,13 +165,13 @@ portfolio = {
         portfolio.setSection();
     },
     checkNavDisplays: function() {
-        // img elements
+        // image elements
         var imgPath = '#' + s.currentGallery + ' img',
             current = document.querySelector(imgPath + '.current'),
             next = document.querySelectorAll(imgPath + '.next'),
             prev = document.querySelectorAll(imgPath + '.prev');
             console.log(imgPath);
-        // controll buttons elements
+        // control buttons elements
         var buttonNext = document.querySelector('a.next-button'),
             buttonPrev = document.querySelector('a.prev-button');
 
@@ -191,35 +191,32 @@ portfolio = {
             buttonPrev.classList.remove('invisible');
         }
     },
-    slideNext: function(button) {
+    slideTo: function(way) {
 
+        // Always keep up with elements classes
         var current = document.querySelector('img.current'),
-            next = document.querySelectorAll('img.next');
-
-            if(next.length > 0) {
-                current.classList.remove('current');
-                current.classList.add('prev');
-
-                next[0].classList.remove('next');
-                next[0].classList.add('current');
-                console.log(next.length);
-            }
-
-            portfolio.checkNavDisplays();
-    },
-    slidePrev: function(button) {
-        var current = document.querySelector('img.current'),
+            next = document.querySelectorAll('img.next'),
             prev = document.querySelectorAll('img.prev');
 
-            if(prev) {
-                current.classList.remove('current');
-                current.classList.add('next');
+        // way.target is control button
+        // which contain class 'next-button' or 'prev-button'
+        // so I will use that to specify where slides should go
+        var elements = ( way.target.classList.contains('next-button') ) ? next : prev;
+            current.classList.remove('current');
 
-                prev[0].classList.remove('prev');
-                prev[0].classList.add('current');
+            if(elements === next) {
+                current.classList.add('prev');
+                elements[0].classList.remove('next');
+                elements[0].classList.add('current');
+            } else {
+                var lastPrev = elements.length-1; // index of last previous image
+
+                current.classList.add('next');
+                elements[lastPrev].classList.remove('prev');
+                elements[lastPrev].classList.add('current');
             }
 
-            portfolio.checkNavDisplays();
+            portfolio.checkNavDisplays(); // check if we can see specific control buttons
     },
     scrollTo: function(to, duration) {
             // element = document.body for Chrome, and document.documentElement for firefox
