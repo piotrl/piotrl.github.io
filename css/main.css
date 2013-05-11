@@ -319,6 +319,24 @@ h1.headline::after {
     padding-right: 5px;
 }
 
+.works aside .aside-footer {
+    font-size: 0.9em;
+}
+
+.works aside .run-date {
+    float: left;
+}
+
+.works aside .status {
+    float: right;
+}
+
+.works aside a.status {
+    background: #666;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
 .works article h2 {
     font-size: 1.5em;
     font-weight: bold;
