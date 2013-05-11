@@ -4,7 +4,7 @@ portfolio = {
         navList: document.querySelectorAll('.navigate nav a'),
         sectionList: document.querySelectorAll('section.content'),
         projectList: document.querySelectorAll('section.works a.thumb'),
-        galleryEl: document.getElementById('presentation'),
+        galleryEl: document.getElementById('portfolio'),
         scrollTime: 500,
         ignoreHashChange: false,
         fileNames: null,    // imported from index.html
@@ -67,13 +67,13 @@ portfolio = {
 
         hash = hash.replace('#', '');
 
-        // change nav element styles
+        // change navigation element styles
         var navEl = document.querySelector("nav a[href*='#"+hash+"']");
         if(navEl) {
             navEl.classList.add("active");
         }
 
-        // set hash in adress
+        // set hash in address
         if(history.pushState && location.hash !== '#!/' + hash ) {
             history.pushState(null, null, '#!/' + hash);
         }
@@ -81,13 +81,15 @@ portfolio = {
     setSection: function() {
         // check offsets of all sections
 
-        for(var i = 0; i < s.sectionList.length; i++) {
-            var elOffsetTop = s.sectionList[i].offsetTop,
-                elOffsetBottom = parseInt(elOffsetTop + s.sectionList[i].offsetHeight, 10);
-                // console.info(window.scrollY + " ↓ " + elOffsetTop + " ↓↓ " + elOffsetBottom);
-            if(window.scrollY >= elOffsetTop && window.scrollY <= elOffsetBottom) {
-                if(s.ignoreHashChange === false) {
-                    portfolio.setHash(s.sectionList[i].id);
+        if( s.currentGallery === null ) {
+            for(var i = 0; i < s.sectionList.length; i++) {
+                var elOffsetTop = s.sectionList[i].offsetTop,
+                    elOffsetBottom = parseInt(elOffsetTop + s.sectionList[i].offsetHeight, 10);
+                    // console.info(window.scrollY + " | " + elOffsetTop + " || " + elOffsetBottom);
+                if(window.scrollY >= elOffsetTop && window.scrollY <= elOffsetBottom) {
+                    if(s.ignoreHashChange === false) {
+                        portfolio.setHash(s.sectionList[i].id);
+                    }
                 }
             }
         }
@@ -115,8 +117,10 @@ portfolio = {
     enableGalleryLayer: function(id) {
         s.ignoreHashChange = true;
         s.currentGallery = id;
+        s.galleryEl.style.top = window.scrollY + 'px';
 
         var imageList = document.querySelector('section.slides #' + id);
+        // var imageList = document.querySelector('section.slides #' + id);
         if(!imageList) {
             portfolio.createGalleryLayer(id);
         }
@@ -127,7 +131,7 @@ portfolio = {
 
         portfolio.checkNavDisplays();
 
-        portfolio.setHash( 'presentation/' + id );
+        portfolio.setHash( 'works/' + id );
     },
     createGalleryLayer: function(id) {
         var galleryLayer = s.galleryEl;
@@ -161,6 +165,7 @@ portfolio = {
             that.classList.add('invisible');
         });
 
+        s.currentGallery = null;
         s.ignoreHashChange = false;
         portfolio.setSection();
     },
@@ -194,9 +199,9 @@ portfolio = {
     slideTo: function(way) {
 
         // Always keep up with elements classes
-        var current = document.querySelector('img.current'),
-            next = document.querySelectorAll('img.next'),
-            prev = document.querySelectorAll('img.prev');
+        var current = document.querySelector('#' + s.currentGallery + ' img.current'),
+            next = document.querySelectorAll('#' + s.currentGallery + ' img.next'),
+            prev = document.querySelectorAll('#' + s.currentGallery + ' img.prev');
 
         // way.target is control button
         // which contain class 'next-button' or 'prev-button'
