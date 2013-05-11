@@ -1,3 +1,11 @@
+/**
+ * Author: Piotr Lewandowski
+ * Website: piotrl.net
+ *
+ * You can use fragments of this code freely, but not as a whole file.
+ * --------------------------------------------------------------------------
+ */
+
 /* ==========================================================================
    Base styles
    ========================================================================== */
@@ -21,10 +29,10 @@ body {
     transition: .5s;
 }
 
-html, body {
+/*html, body {
     height: 100%;
 }
-
+*/
 a {
     color: #EEE;
     text-decoration: none;
@@ -299,7 +307,7 @@ h1.headline::after {
     float: left;
     font-family: 'PT Sans', serif;
     font-weight: normal;
-    max-width: 35%;
+    max-width: 14em;
 }
 
 .works aside dl {
@@ -318,12 +326,18 @@ h1.headline::after {
     text-align: center;
 }
 
+
 .works article a.thumb {
     display: block;
     position: relative;
     float: right;
     border: 1px solid #666;
     box-shadow: 0 0 5px 0 #222;
+    transition: .3s;
+}
+
+.works article:hover a.thumb {
+    border-color: #7E90A8;
 }
 
 .works article img {
@@ -546,13 +560,13 @@ h1.headline::after {
         margin: 3em;
         box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
         border: 1px solid #444;
-        transition: .5s;
+        transition: .5s all;
     }
 
     section.slides img.current {
         opacity: 1;
-        left: 0;
-        right: 0; /* firefox doesn't wanna animate without 0 on first state */
+        left: 0;    /* it is broking slide from right to the center in fx/chrome, but */
+        right: 0;   /* firefox doesn't wanna animate without 0 on first state */
     }
 
     section.slides img.next {
@@ -565,11 +579,20 @@ h1.headline::after {
         left: -20em;
     }
 
+    section.content {
+        opacity: 1;
+        transition: .3s opacity;
+    }
+
     html.presentation section.content {
-        display: none !important;
+        opacity: 0;
     }
 
     html.presentation section.slides {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
         display: block;
         visibility: visible;
         animation: .5s fadeIn ease-out;
@@ -636,6 +659,7 @@ h1.headline::after {
     .container {
         max-width: 1024px;
         margin: 0 auto;
+        position: relative;
     }
 
     section.navigate {
