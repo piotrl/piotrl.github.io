@@ -229,6 +229,10 @@ article, aside {
     overflow: hidden;
 }
 
+aside h3 {
+    margin-top: 0;
+}
+
 /**
  * Social media icons
  */
@@ -236,17 +240,21 @@ article, aside {
 .social li {
     list-style: none;
     padding: .5em 0;
+    transition: .3s width;
+
 }
 
 .social a {
     display: block;
     padding-left: 42px;
+    width: 160px;
+    color: #CCC;
     font-weight: bold;
     white-space:pre;
-    color: #CCC;
     line-height: 1em;
     background-repeat: no-repeat;
     background-size: 32px;
+    transition: .3s;
 }
 
 .social a::after {
@@ -261,14 +269,14 @@ article, aside {
 .social .github a { background-image: url("../img/icons/github-32.png"); }
 .social .mail a { background-image: url("../img/icons/mail-32.png"); }
 
-.footer {
-    padding: 0.5em;
-    text-align: center;
-    text-transform: lowercase;
-    font-family: Verdana;
-    background: -webkit-linear-gradient(top, transparent, #111),
-                url("../img/bg_footer.png");
-    clear: both;
+html.presentation .social li {
+    width: 50px;
+    transition-delay: .3s;
+}
+
+html.presentation .social a {
+    width: 0;
+    overflow: hidden;
 }
 
 /**
@@ -314,9 +322,8 @@ h1.headline::after {
     font-size: 0.9em;
 }
 
-.works aside dl dt {
-    float: left;
-    padding-right: 5px;
+.works aside dl dd {
+    margin: 0;
 }
 
 .works aside .aside-footer {
@@ -575,7 +582,7 @@ h1.headline::after {
         position: absolute;
         display: block;
         max-width: 90%;
-        margin: 3em;
+        margin: 3em 1.5em;
         box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
         border: 1px solid #444;
         transition: .5s all;
@@ -583,7 +590,6 @@ h1.headline::after {
 
     section.slides img.current {
         opacity: 1;
-        left: 0;    /* it is broking slide from right to the center in fx/chrome, but */
         right: 0;   /* firefox doesn't wanna animate without 0 on first state */
     }
 
@@ -594,7 +600,7 @@ h1.headline::after {
 
     section.slides img.prev {
         opacity: 0;
-        left: -20em;
+        right: 20em;
     }
 
     section.content {
