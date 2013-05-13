@@ -89,16 +89,17 @@ portfolio = {
         // check offsets of all sections
 
         if( s.currentGallery === null ) {
-            for(var i = 0; i < s.sectionList.length; i++) {
-                var elOffsetTop = s.sectionList[i].offsetTop,
-                    elOffsetBottom = parseInt(elOffsetTop + s.sectionList[i].offsetHeight, 10);
+            [].forEach.call(s.sectionList, function(that) {
+                var elOffsetTop = that.offsetTop,
+                    elOffsetBottom = parseInt(elOffsetTop + that.offsetHeight, 10);
                     // console.info(window.scrollY + " | " + elOffsetTop + " || " + elOffsetBottom);
                 if(window.scrollY >= elOffsetTop && window.scrollY <= elOffsetBottom) {
                     if(s.ignoreHashChange === false) {
-                        portfolio.setHash(s.sectionList[i].id);
+                        portfolio.setHash(that.id);
                     }
                 }
-            }
+            });
+
         }
     },
     createGalleryNav: function() {
@@ -126,14 +127,14 @@ portfolio = {
         s.currentGallery = id;
         s.galleryEl.style.top = window.scrollY + 'px';
 
-        var imageList = document.querySelector('section.slides #' + id);
-        // var imageList = document.querySelector('section.slides #' + id);
+        var imageList = document.getElementById(id);
+
         if(!imageList) {
             portfolio.createGalleryLayer(id);
         }
 
         // check one more time
-        imageList = document.querySelector('section.slides #' + id);
+        imageList = document.getElementById(id);
         imageList.classList.remove('invisible');
 
         portfolio.checkNavDisplays();
@@ -166,7 +167,6 @@ portfolio = {
         document.documentElement.classList.remove("presentation"); // remove .presentation from <html>
 
         var imageList = document.querySelectorAll('section.slides .caption');
-        console.log(imageList);
 
         [].forEach.call(imageList, function(that) {
             that.classList.add('invisible');
@@ -210,7 +210,6 @@ portfolio = {
         // way.target is control button
         // which contain class 'next-button' or 'prev-button'
         // so I will use that to specify where slides should go
-        // console.log(way.target);
         var elements = ( way.target.classList.contains('next-button') ) ? next : prev;
             current.classList.remove('current');
 
@@ -221,7 +220,6 @@ portfolio = {
             }
             else if(elements === prev && prev.length > 0) {
                 var lastPrev = elements.length-1; // index of last previous image
-                console.log('lastPrev: ' + lastPrev);
                 current.classList.add('next');
                 elements[lastPrev].classList.remove('prev');
                 elements[lastPrev].classList.add('current');
@@ -259,24 +257,25 @@ portfolio = {
         animateScroll();
     },
     keyActions: function(event) {
-            // console.info('keypress: '+ event.keyCode);
-            var simulate = {};
-            if( event.keyCode === 27 ) {
-                portfolio.removeGalleryLayer();
-            }
+            if(s.currentGallery !== null) {
+                var simulate = {};
+                if( event.keyCode === 27 ) {
+                    portfolio.removeGalleryLayer();
+                }
 
-            if( event.keyCode === 39 ) {
-                simulate.target = document.querySelector('.next-button');
+                if( event.keyCode === 39 ) {
+                    simulate.target = document.querySelector('.next-button');
 
-                portfolio.slideTo(simulate);
-                portfolio.checkNavDisplays();
-            }
+                    portfolio.slideTo(simulate);
+                    portfolio.checkNavDisplays();
+                }
 
-            if( event.keyCode === 37 ) {
-                simulate.target = document.querySelector('.prev-button');
+                if( event.keyCode === 37 ) {
+                    simulate.target = document.querySelector('.prev-button');
 
-                portfolio.slideTo(simulate);
-                portfolio.checkNavDisplays();
+                    portfolio.slideTo(simulate);
+                    portfolio.checkNavDisplays();
+                }
             }
     },
     onLoad: function() {
@@ -289,7 +288,7 @@ portfolio = {
                 document.documentElement.classList.add('presentation');
                 portfolio.enableGalleryLayer(hashAttrs[1]);
             } else {
-                var direction = document.querySelector( '#' + hashAttrs[0] ).offsetTop;
+                var direction = document.getElementById( hashAttrs[0] ).offsetTop;
                 portfolio.scrollTo( direction, s.scrollTime );
 
                 portfolio.setHash(hashAttrs[0]);
