@@ -19,13 +19,18 @@ textarea {
 }
 
 html {
-    background: #444 url("../img/bg_body.png");
+    background: #111 url("../img/bg_body.png"); /* or 363f48 for blue bg */
+}
+
+html.presentation {
+    overflow: hidden;
 }
 
 body {
     font-size: 1em;
     line-height: 1.5;
     text-shadow: 1px 1px 2px #111;
+    -webkit-transition: .5s;
     transition: .5s;
 }
 
@@ -240,6 +245,7 @@ aside h3 {
 .social li {
     list-style: none;
     padding: .5em 0;
+    -webkit-transition: .3s width;
     transition: .3s width;
 
 }
@@ -254,6 +260,7 @@ aside h3 {
     line-height: 1em;
     background-repeat: no-repeat;
     background-size: 32px;
+    -webkit-transition: .3s;
     transition: .3s;
 }
 
@@ -313,9 +320,9 @@ h1.headline::after {
 
 .works aside {
     float: left;
-    font-family: 'PT Sans', serif;
+    font-family: pt-sans, serif;
     font-weight: normal;
-    max-width: 14em;
+    max-width: 14.5em;
 }
 
 .works aside dl {
@@ -358,12 +365,13 @@ h1.headline::after {
     float: right;
     border: 1px solid #666;
     box-shadow: 0 0 5px 0 #222;
+    -webkit-transition: .3s;
     transition: .3s;
 }
 
-.works article:hover a.thumb {
+.works article a.thumb:hover {
     border-color: #7E90A8;
-}
+    }
 
 .works article img {
     max-width: 100%%;
@@ -516,7 +524,7 @@ h1.headline::after {
         height: 100%;
         border: 0 solid #555;
         border-right-width: 1px;
-        box-shadow: 0 0 10px #222;
+        box-shadow: inset 0 0 10px #111;
         padding: 1em 0;
     }
 
@@ -527,7 +535,7 @@ h1.headline::after {
 
     html.presentation section.navigate {
         border-color: #222;
-        box-shadow: 0 0 10px #000;
+        box-shadow: inset 0 0 10px #000;
     }
 
     section.slides {
@@ -585,7 +593,8 @@ h1.headline::after {
         margin: 3em 1.5em;
         box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
         border: 1px solid #444;
-        transition: .5s all;
+        -webkit-transition: .4s all;
+        transition: .4s all;
     }
 
     section.slides img.current {
@@ -605,6 +614,7 @@ h1.headline::after {
 
     section.content {
         opacity: 1;
+        -webkit-transition: .3s opacity;
         transition: .3s opacity;
     }
 
@@ -619,8 +629,8 @@ h1.headline::after {
         right: 0;
         display: block;
         visibility: visible;
-        animation: .5s fadeIn ease-out;
-        -webkit-animation: .5s fadeIn ease-out;
+        -webkit-animation: .5s fadeIn ease-in;
+        animation: .5s fadeIn ease-in;
     }
 
     header > nav {
@@ -656,6 +666,7 @@ h1.headline::after {
 
     header > nav li a.active {
         background-color: rgba(0, 0, 0, .5);
+        -webkit-transition: .3s;
         transition: .3s;
     }
 
