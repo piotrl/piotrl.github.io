@@ -314,15 +314,15 @@ h1.headline::after {
  */
 
 .works article {
-    padding: 1em;
+    padding: 1em 0;
     border-top: 1px dashed #555;
 }
 
 .works aside {
-    float: left;
     font-family: pt-sans, serif;
     font-weight: normal;
-    max-width: 14.5em;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .works aside dl {
@@ -362,11 +362,11 @@ h1.headline::after {
 .works article a.thumb {
     display: block;
     position: relative;
-    float: right;
     border: 1px solid #666;
     box-shadow: 0 0 5px 0 #222;
-    -webkit-transition: .3s;
-    transition: .3s;
+    margin: 0 auto;
+    width: 400px;
+    max-width: 100%%;
 }
 
 .works article a.thumb:hover {
@@ -498,6 +498,8 @@ h1.headline::after {
     }
 
     article {
+        padding: 1em;
+        padding-right: 0;
         font-size: 1.0em;
     }
 
@@ -681,7 +683,7 @@ h1.headline::after {
     }
 
     .content, .slides {
-        margin-left: 20em;
+        margin-left: 19em;
     }
 
     .footer {
@@ -701,6 +703,21 @@ h1.headline::after {
         border-left-width: 1px;
         margin-left: 1em;
         padding-top: 45px;
+    }
+
+    .content, .slides {
+        margin-left: 20em;
+    }
+
+    .works article a.thumb {
+        float: right;
+        width: auto;
+        margin: 0;
+    }
+
+    .works aside {
+        float: left;
+        max-width: 15em;
     }
 
     .footer {
