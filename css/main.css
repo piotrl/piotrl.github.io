@@ -29,6 +29,7 @@ html.presentation {
 body {
     font-size: 1em;
     line-height: 1.5;
+    font-family: 'Droid Sans', sans-serif;
     text-shadow: 1px 1px 2px #111;
     -webkit-transition: .5s;
     transition: .5s;
@@ -295,18 +296,11 @@ aside h3,
 h1.headline {
     font-weight: normal;
     text-align: center;
-    font-family: Georgia;
+    font-family: 'Droid Sans', serif;
 }
 
-.about article h1::before,
-aside h3::before,
-h1.headline::before,
-.about article h1::after,
-aside h3::after,
-h1.headline::after {
-    content: ' — ';
-    color: #AAA;
-    text-shadow: 0 1px 1px #222;
+h1.headline {
+    font-size: 2.5em;
 }
 
 /**
@@ -314,12 +308,13 @@ h1.headline::after {
  */
 
 .works article {
-    padding: 1em 0;
+    padding: 1em;
+    padding-right: 0;
     border-top: 1px dashed #555;
 }
 
 .works aside {
-    font-family: pt-sans, serif;
+    font-family: 'PT Sans', serif;
     font-weight: normal;
     max-width: 400px;
     margin: 0 auto;
@@ -339,6 +334,7 @@ h1.headline::after {
 
 .works aside .run-date {
     float: left;
+    padding: 4px 0;
 }
 
 .works aside .status {
@@ -346,9 +342,13 @@ h1.headline::after {
 }
 
 .works aside a.status {
-    background: #666;
-    padding: 2px 5px;
+    background: #458A45;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #666;
+    font-family: Arial;
+    padding: 4px 7px;
     border-radius: 3px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 1px rgba(0,0,0,0.3);
 }
 
 .works article h2 {
@@ -366,12 +366,14 @@ h1.headline::after {
     box-shadow: 0 0 5px 0 #222;
     margin: 0 auto;
     width: 400px;
-    max-width: 100%%;
+    max-width: 100%;
+    -webkit-transition: .3s border-color;
+    transition: .3s border-color;
 }
 
 .works article a.thumb:hover {
-    border-color: #7E90A8;
-    }
+    border-color: #458A45;
+}
 
 .works article img {
     max-width: 100%%;
@@ -692,7 +694,7 @@ h1.headline::after {
     }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1010px) {
     .container {
         max-width: 1024px;
         margin: 0 auto;
@@ -710,14 +712,15 @@ h1.headline::after {
     }
 
     .works article a.thumb {
-        float: right;
+        float: left;
         width: auto;
         margin: 0;
     }
 
     .works aside {
-        float: left;
-        max-width: 15em;
+        float: right;
+        padding: 0;
+        width: 16.5em;
     }
 
     .footer {
