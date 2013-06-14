@@ -45,6 +45,14 @@ a {
     text-shadow: 1px 1px 2px #000;
 }
 
+p a {
+    border-bottom: 1px dotted #CCC;
+}
+
+p a:hover {
+    border-bottom-style: solid;
+}
+
 /* Remove outline on links in firefox */
 
 a:focus {
