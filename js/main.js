@@ -1,3 +1,6 @@
+(function() {
+'use strict';
+
 var s,
 portfolio = {
 	settings: {
@@ -116,7 +119,7 @@ portfolio = {
 		s.galleryEl.appendChild(prevGalleryEl);
 		s.galleryEl.appendChild(closeGalleryEl);
 
-		 // add new events
+		// add new events
 		closeGalleryEl.addEventListener('click', portfolio.removeGalleryLayer, false);
 		nextGalleryEl.addEventListener('click', portfolio.slideTo, false);
 		prevGalleryEl.addEventListener('click', portfolio.slideTo, false);
@@ -154,8 +157,11 @@ portfolio = {
 			var slide = document.createElement('img');
 			slide.src = "./img/portfolio/" + id + '/' + s.fileNames[id][i]; // URL PATH
 
-			if(i === 0) slide.classList.add('current');
-			else slide.classList.add('next');
+			if(i === 0) {
+				slide.classList.add('current');
+			}	else {
+				slide.classList.add('next');
+			}
 
 			imgCaption.appendChild(slide);
 		}
@@ -178,14 +184,11 @@ portfolio = {
 	checkNavDisplays: function() {
 		// image elements
 		var imgPath = '#' + s.currentGallery + ' img',
-			current = document.querySelector(imgPath + '.current'),
 			next = document.querySelectorAll(imgPath + '.next'),
 			prev = document.querySelectorAll(imgPath + '.prev');
 		// control buttons elements
 		var buttonNext = document.querySelector('a.next-button'),
 			buttonPrev = document.querySelector('a.prev-button');
-
-		var imgCount = 1 + next.length + prev.length; // 1 is for one current element
 
 		if( next.length === 0 ) {
 			buttonNext.classList.add('invisible');
@@ -298,3 +301,5 @@ portfolio = {
 
 // EVERYTHING BEGIN HERE
 document.addEventListener('DOMContentLoaded', portfolio.init, false);
+
+})();

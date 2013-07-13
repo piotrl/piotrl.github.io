@@ -384,7 +384,7 @@ h1.headline {
 }
 
 .works article img {
-    max-width: 100%%;
+    max-width: 100%;
 }
 
 
@@ -459,15 +459,6 @@ h1.headline {
 
 .clearfix:after {
     clear: both;
-}
-
-/*
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-
-.clearfix {
-    *zoom: 1;
 }
 
 /* ==========================================================================
@@ -792,10 +783,6 @@ h1.headline {
 
     img {
         max-width: 100% !important;
-    }
-
-    @page {
-        margin: 0.5cm;
     }
 
     p,
