@@ -10,7 +10,7 @@ portfolio = {
 		galleryEl: document.getElementById('portfolio'),
 		scrollTime: 500,
 		ignoreHashChange: false,
-		fileNames: null,    // imported from index.html
+		fileNames: null,
 		currentGallery: null
 	},
 	init: function() {
@@ -27,6 +27,7 @@ portfolio = {
 			return -c/2 * (t*(t-2) - 1) + b;
 		};
 
+		s.fileNames = portfolio.getFileNames();
 		portfolio.bindUIActions();
 		portfolio.createGalleryNav();
 		portfolio.onLoad();
@@ -67,6 +68,13 @@ portfolio = {
 			}, false);
 		});
 
+	},
+	getFileNames: function() {
+		var request = new XMLHttpRequest();
+		request.open("GET", "js/portfolio.json", false);
+		request.send(null);
+
+		return JSON.parse(request.responseText);
 	},
 	// setters
 	setHash: function(hash) {
@@ -151,7 +159,7 @@ portfolio = {
 			imgCaption.classList.add('invisible');
 			imgCaption.id = id;
 
-		// s.fileNames imported from HTML file
+		// s.fileNames imported from JSON file
 
 		for(var i = 0; i < s.fileNames[id].length; i++) {
 			var slide = document.createElement('img');

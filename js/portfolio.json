@@ -1,0 +1,23 @@
+{
+	"portaloze": [
+		"front.png",
+		"single.png"
+	],
+	"militaria": [
+		"front.png"
+	],
+	"metab": [
+		"front.png",
+		"gallery.png",
+		"tablet.png",
+		"phone.png"
+	],
+	"kulinarne": [
+		"front.png",
+		"single.png"
+	],
+	"grovman": [
+		"front.png",
+		"page.png"
+	]
+}
