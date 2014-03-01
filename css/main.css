@@ -265,7 +265,6 @@ aside h3 {
     width: 160px;
     color: #CCC;
     font-weight: bold;
-    white-space:pre;
     line-height: 1em;
     background-repeat: no-repeat;
     background-size: 32px;
@@ -273,8 +272,8 @@ aside h3 {
     transition: .3s;
 }
 
-.social a::after {
-    content: " \A" attr(href);
+.social a span {
+    display: block;
     font-weight: normal;
     color: #999;
     font-size: 0.8em;
@@ -284,16 +283,6 @@ aside h3 {
 .social .twitter a { background-image: url("../img/icons/twitter-32.png"); }
 .social .github a { background-image: url("../img/icons/github-32.png"); }
 .social .mail a { background-image: url("../img/icons/mail-32.png"); }
-
-html.presentation .social li {
-    width: 50px;
-    transition-delay: .3s;
-}
-
-html.presentation .social a {
-    width: 0;
-    overflow: hidden;
-}
 
 /**
  * About
