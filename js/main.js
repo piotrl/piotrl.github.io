@@ -92,8 +92,8 @@ portfolio = {
 		}
 
 		// set hash in address
-		if(history.pushState && location.hash !== '#!/' + hash ) {
-			history.pushState(null, null, '#!/' + hash);
+		if(location.hash !== '#!/' + hash ) {
+			location.hash = '#!/' + hash;
 		}
 	},
 	setSection: function() {
