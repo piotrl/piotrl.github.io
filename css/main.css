@@ -345,20 +345,6 @@ h1.headline {
     padding: 4px 0;
 }
 
-.works aside .status {
-    float: right;
-}
-
-.works aside a.status {
-    background: #458A45;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 1px #666;
-    font-family: Arial;
-    padding: 4px 7px;
-    border-radius: 3px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 1px rgba(0,0,0,0.3);
-}
-
 .works article h2 {
     font-size: 1.5em;
     font-weight: bold;
