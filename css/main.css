@@ -582,7 +582,12 @@ h1.headline {
 
     section.slides img.current {
         opacity: 1;
+
+        /* centering absolute image */   
         right: 0;   /* firefox doesn't wanna animate without 0 on first state */
+        left: 0;     
+        margin-left: auto;
+        margin-right: auto;
     }
 
     section.slides img.next {
