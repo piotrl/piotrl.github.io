@@ -191,15 +191,15 @@ portfolio = {
 			buttonPrev = document.querySelector('a.prev-button');
 
 		if( next.length === 0 ) {
-			buttonNext.classList.add('invisible');
+			buttonNext.classList.add('disabled');
 		} else {
-			buttonNext.classList.remove('invisible');
+			buttonNext.classList.remove('disabled');
 		}
 
 		if( prev.length === 0 ) {
-			buttonPrev.classList.add('invisible');
+			buttonPrev.classList.add('disabled');
 		} else {
-			buttonPrev.classList.remove('invisible');
+			buttonPrev.classList.remove('disabled');
 		}
 	},
 	slideTo: function(way) {
@@ -301,5 +301,5 @@ portfolio = {
 
 // EVERYTHING BEGIN HERE
 document.addEventListener('DOMContentLoaded', portfolio.init, false);
-
+		
 })();

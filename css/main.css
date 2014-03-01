@@ -425,6 +425,11 @@ h1.headline {
     visibility: hidden;
 }
 
+.disabled {
+    opacity: .4;
+    pointer-events: none;
+}
+
 /*
  * Clearfix: contain floats
  *
@@ -545,8 +550,8 @@ h1.headline {
     }
 
     section.slides a.next-button {
-        top: 20em;
-        right: -1em;
+        top: 1em;
+        left: 50%;
         background-position: 0 0;
     }
 
@@ -555,8 +560,8 @@ h1.headline {
     }
 
     section.slides a.prev-button {
-        top: 20em;
-        left: 1em;
+        top: 1em;
+        left: 45%;
         background-position: 20px 0;
     }
 
