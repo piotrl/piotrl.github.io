@@ -617,6 +617,7 @@ h1.headline {
         right: 0;
         display: block;
         visibility: visible;
+        overflow: hidden;
         -webkit-animation: .5s fadeIn ease-in;
         animation: .5s fadeIn ease-in;
     }
@@ -689,6 +690,10 @@ h1.headline {
         border-left-width: 1px;
         margin-left: 1em;
         padding-top: 45px;
+    }
+
+    html.presentation section.slides {
+        overflow: visible;
     }
 
     .content, .slides {
