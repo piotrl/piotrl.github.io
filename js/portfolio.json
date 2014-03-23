@@ -1,4 +1,9 @@
 {
+	"endi": [
+		"front.png",
+		"tablet.png",
+		"mobile.png"
+	],
 	"portaloze": [
 		"front.png",
 		"single.png"
