@@ -31,7 +31,6 @@ body {
     line-height: 1.5;
     font-family: 'Droid Sans', sans-serif;
     text-shadow: 1px 1px 2px #111;
-    -webkit-transition: .5s;
     transition: .5s;
 }
 
@@ -254,7 +253,6 @@ aside h3 {
 .social li {
     list-style: none;
     padding: .5em 0;
-    -webkit-transition: .3s width;
     transition: .3s width;
 
 }
@@ -268,7 +266,6 @@ aside h3 {
     line-height: 1em;
     background-repeat: no-repeat;
     background-size: 32px;
-    -webkit-transition: .3s;
     transition: .3s;
 }
 
@@ -351,7 +348,6 @@ h1.headline {
     margin: 0 auto;
     width: 400px;
     max-width: 100%;
-    -webkit-transition: .3s border-color;
     transition: .3s border-color;
 }
 
@@ -598,7 +594,6 @@ a.thumb:hover span.slidesAmount {
         margin: 3em 1.5em;
         box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
         border: 1px solid #444;
-        -webkit-transition: .4s all;
         transition: .4s all;
     }
 
@@ -624,7 +619,6 @@ a.thumb:hover span.slidesAmount {
 
     section.content {
         opacity: 1;
-        -webkit-transition: .3s opacity;
         transition: .3s opacity;
     }
 
@@ -677,7 +671,6 @@ a.thumb:hover span.slidesAmount {
 
     header > nav li a.active {
         background-color: rgba(0, 0, 0, .5);
-        -webkit-transition: .3s;
         transition: .3s;
     }
 
