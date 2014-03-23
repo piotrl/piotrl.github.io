@@ -67,7 +67,6 @@ portfolio = {
 				event.preventDefault();
 			}, false);
 		});
-
 	},
 	getFileNames: function() {
 		var request = new XMLHttpRequest();
@@ -304,6 +303,23 @@ portfolio = {
 				portfolio.setHash(hashAttrs[0]);
 			}
 		}
+
+		// Adnotation to every work thumb with amount of slides in gallery
+
+		var thumbs = document.querySelectorAll('section.works a.thumb');
+		var amountSlides = document.createElement('span');
+
+		amountSlides.classList.add('slidesAmount');
+
+		for (var i = thumbs.length - 1; i >= 0; i--) {
+			var name = thumbs[i].hash.slice(1),		// get id of gallery
+				span = amountSlides.cloneNode(),
+				textForm = (s.fileNames[name].length == 1) ? "zdjęcie" : "zdjęcia",
+				spanText = document.createTextNode(s.fileNames[name].length + " " + textForm);
+
+			span.appendChild(spanText);
+			thumbs[i].appendChild(span);
+		};
 	}
 };
 

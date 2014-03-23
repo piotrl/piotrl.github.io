@@ -345,6 +345,7 @@ h1.headline {
 .works article a.thumb {
     display: block;
     position: relative;
+    overflow: hidden;
     border: 1px solid #666;
     box-shadow: 0 0 5px 0 #222;
     margin: 0 auto;
@@ -362,6 +363,27 @@ h1.headline {
     max-width: 100%;
 }
 
+a.thumb span.slidesAmount {
+    display: block;
+    width: 25%;
+    padding: 5px;
+
+    position: absolute;
+    bottom: 40px;
+    right: 5px;
+
+    background: rgba(0, 0, 0, .9);
+    border: 1px solid #333;
+    font-size: 0.8em;
+    text-align: center;
+    opacity: 0;
+    transition: .3s;
+}
+
+a.thumb:hover span.slidesAmount {
+    bottom: 15px;
+    opacity: 1;
+}
 
 /* ==========================================================================
    Helper classes
