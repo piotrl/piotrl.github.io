@@ -1,8 +1,6 @@
-piotrl.github.io
+piotrl.net
 ================
 
-portfolio
+Feel free to learn and adopt techniques used on the website.
 
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/piotrl/piotrl.github.io/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+Despite being open sourced, all portfolio images and content remain copyright of Piotr Lewandowski.
