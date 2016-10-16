@@ -1,7 +1,7 @@
 # AUTHOR
 
     Piotr Lewandowski
-      twitter: http://twitter.com/piotlr
+      twitter: http://twitter.com/constjs
       Google+: http://gplus.to/grovman
       Website: http://piotrl.net
 

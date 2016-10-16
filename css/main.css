@@ -142,12 +142,12 @@ section.navigate {
 .author {
     position: relative;
     display: block;
-    float: left;
-    margin: 0 .5em;
+    margin: 0 auto;
+    max-width: 10em;
 }
 
 .author img {
-    max-height: 4em;
+    max-width: 100%;
     border-radius: 0 0 2px 2px;
     box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
 }
@@ -162,7 +162,7 @@ section.navigate {
 
 h1.name {
     padding: 0;
-    margin: 0;
+    margin: 1em;
     margin-top: .5em;
     font-size: 1em;
     font-weight: normal;
@@ -174,14 +174,14 @@ h1.name span {
     font-weight: bold;
 }
 
-h1.name + h2 {
+.introdution p {
     font-size: 1em;
     color: #AAA;
-    margin: 0;
+    margin: 1em;
     font-weight: normal;
-    text-transform: lowercase;
-    line-height: 1em;
+    line-height: 1.7em;
 }
+
 header > nav {
     margin: 1em auto;
     padding-bottom: 3em;

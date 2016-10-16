@@ -1,181 +1,59 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Piotr Lewandowski - Portfolio</title>
-		<link rel="author" type="text/plain" href="humans.txt">
+		<title>Piotr Lewandowski - JavaScript & Java enthusiast</title>
+		<meta name="description" content="Personal website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<meta name="description" content="" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            a {
+                text-decoration: none;
+            }
 
-		<link rel="stylesheet" href="css/normalize.css" />
-		<link rel="stylesheet" href="css/main.css" />
+            a:hover {
+                text-decoration: underline;
+            }
 
-		<!-- Import fonts -->
-		<link rel="stylesheet" 
-			href="http://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=latin,latin-ext" />
-		<link rel="stylesheet"
-			href="http://fonts.googleapis.com/css?family=Droid+Sans" />
+            .code {
+                margin: 0;
+                padding: 0;
+                display: block;
+
+                font-size: 14px;
+                font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+                white-space: pre;
+            }
+
+            .social {
+                line-height: 1.5em;
+            }
+
+            h4, h3 {
+                margin: 0 1em;
+            }
+        </style>
 	</head>
-	<body>
-		<div class="container">
-		<section class="navigate">
-			<header>
-				<div class="introdution">
-					<a href="./" class="author"><img src="img/av.png" alt="zdjęcie" /></a>
-					<h1 class="name">Piotr <span>Lewandowski</span></h1>
-					<h2>front-end + wordpress</h2>
-				</div>
-				<nav>
-					<ul>
-						<li><a href="#about">O mnie</a></li>
-						<li><a href="#projects">Projekty</a></li>
-						<li><a href="#works">Prace</a></li>
-					</ul>
-				</nav>
-			</header>
-			<aside>
-				<h3>Kontakt</h3>
-				<ul class="social">
-					<li class="mail"><a href="mailto:poczta@piotrl.net">
-						Mail <span>poczta@piotrl.net</span>
-					</a></li>
-					<li class="google"><a href="http://google.com/+PiotrLewandowski">
-						Google+ <span>+PiotrLewandowski</span>
-					</a></li>
-					<li class="twitter"><a href="http://twitter.com/piotlr">
-						Twitter <span>@piotlr</span>
-					</a></li>
-					<li class="github"><a href="http://github.com/piotrl">
-						GitHub <span>piotrl</span>
-					</a></li>
-				</ul>
-			</aside>
-		</section>
-		<section id="about" class="content about">
-			<article>
-				<header><h1>O mnie</h1></header>
-				<p>	Cześć, jestem studentem informatyki na Uniwersytecie Gdańskim.
-				Od wielu lat zajmuję się tworzeniem stron internetowych. Przygotowuję je do działania na urządzeniach mobilnych i WordPressie.
-				</p>
-				<p>	W wolnych chwilach moderuję polski support <a href="http://phpbb3.pl/">phpBB3</a> 
-					oraz prowadzę <a href="http://google.com/+PiotrLewandowski">mikrobloga</a>.
-					Możesz mnie spotkać na gdańskich spotkaniach społeczności <a href="http://meetjs.gd/">meet.js</a>.
-				</p>
-				<p>
-					Jeśli potrzebujesz kogoś, kto stworzy dla ciebie stronę internetową, skontaktuj się ze mną.
-					Poniżej sprezentuję Ci kilka moich prac, a listę projetków, które prywatnie rozwijam wraz z ich kodem przejrzysz na <a href="https://github.com/piotrl">GitHubie</a>.
-				</p>
-			</article>
-		</section>
-		<section id="projects" class="content projects">
-			<h1 class="headline">Projekty</h1>
-			<article>
-				<h2>c-markdown</h2>
-				<p>	Konsolowy konwerter markdown do HTML napisany w C
-				</p>
-			</article>
-			<article>
-				<h2>fancyGallery</h2>
-				<p>	Proste <a href="http://piotrl.github.io/fancyGallery/">demo przeglądarki zdjęć</a> wykorzystujące CSS3
-				</p>
-			</article>
-			<article>
-				<h2>fileSegregation</h2>
-				<p>	Skrypt ułatwiający segregację zdjęć według dat utworzenia plików.
-					Tworzy strukturę katalogów i uzupełnia ją odpowiednimi plikami.
-				</p>
-			</article>
-			<article>
-				<h2>Inne...</h2>
-				<p>	Resztę aktualnie rozwijanych przeze mnie projektów znajdziesz na GitHubie.
-				</p>
-			</article>
-		</section>
-		<section id="works" class="content works">
-			<h1 class="headline">Prace</h1>
-			<article>
-				<a href="#portaloze" class="thumb">
-					<img src="./img/portfolio/portaloze/thumb.png" alt="" />
-				</a>
-				<aside>
-					<h2><a href="#portaloze">Portal Odnawialnych Źródeł energii</a></h2>
-					<dl>
-						<dt>Technologie: </dt>
-						<dd>HTML5, CSS3, WordPress, Responsive Design</dd>
-					</dl>
-					<div class="aside-footer">
-						<span class="run-date">
-							Kwiecień 2013
-						</span>
-					</div>
-				</aside>
-			</article>
-			<article>
-				<a href="#militaria" class="thumb">
-					<img src="./img/portfolio/militaria/thumb.png" alt="" />
-				</a>
-				<aside>
-					<h2><a href="#militaria">Sklep militarny</a></h2>
-					<dl>
-						<dt>Technologie: </dt>
-						<dd>HTML5, CSS3, WordPress, Jigoshop</dd>
-					</dl>
-					<div class="aside-footer">
-						<span class="run-date">
-							Sierpień 2012
-						</span>
-					</div>
-				</aside>
-			</article>
-			<article>
-				<a href="#metab" class="thumb">
-					<img src="./img/portfolio/metab/thumb.png" alt="" />
-				</a>
-				<aside>
-					<h2><a href="#metab">Usługi tapicerskie</a></h2>
-					<dl>
-						<dt>Technologie: </dt>
-						<dd>HTML5, CSS3, Responsive Design</dd>
-					</dl>
+    <body>
+        <div class="code">
+            <h3>Piotr Lewandowski</h3>
 
-					<div class="aside-footer">
-						<span class="run-date">
-							Luty 2012
-						</span>
-					</div>
-				</aside>
-			</article>
-			<article>
-				<a href="#kulinarne" class="thumb">
-					<img src="./img/portfolio/kulinarne/thumb.png" alt="" />
-				</a>
-				<aside>
-					<h2><a href="#kulinarne">blog kulinarny</a></h2>
-					<dl>
-						<dt>Technologie: </dt>
-						<dd>XHTML, CSS3, WordPress</dd>
-					</dl>
-					<div class="aside-footer">
-						<span class="run-date">
-							Grudzień 2011
-						</span>
-					</div>
-				</aside>
-			</article>
-		</section>
-		<section id="portfolio" class="slides clearfix">
-		</section>
-	</div>
-		<!-- handling portfolio engine -->
-		<script src="js/main.js"></script>
+            Programmer. JavaScript & Java enthusiast. Family guy. 
+        </div>
+        <div class="code">
+            <h4>Say Hi</h4>
+            mail@piotrl.net
+        </div>
+        <div class="code social">
+            <h4>Want to know more about me?</h4>
+            I...
+            ... tweet: <a href="https://twitter.com/constjs">twitter.com/constjs</a>
+            ... code: <a href="https://github.com/piotrl">github.com/piotrl</a>
+            ... speak: <a href="https://speakerdeck.com/piotrl">speakerdeck.com/piotrl</a>
+            ... organize local IT meetup: <a href="http://ponadprogram.kuznia.co">ponadprogram.kuznia.co</a> [PL]
 
-		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-		<script>
-			var _gaq=[['_setAccount','UA-9352840-2'],['_trackPageview']];
-			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-			g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-			s.parentNode.insertBefore(g,s)}(document,'script'));
-		</script>
-	</body>
+            
+            Résumé: <a href="http://linkedin.com/in/piotr--lewandowski">linkedin.com/in/piotr--lewandowski</a>
+        </div>
+    </body>
 </html>
